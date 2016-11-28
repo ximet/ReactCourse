@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+
+  <title>knockout template</title>
+</head>
+<body>
+  <!-- Check please example in https://jsfiddle.net/ximet/fcgff2ja/ -->
+  <button data-bind="click: ComponentVisible">Show me component</button>
+  <hr/>
+  <hidden-component params="show: DialogVisible" />
+
+  <script>
+    ko.components.register("hidden-component", {
+    viewModel: function(params) {
+        var self = this;
+        self.Show = params.show;
+
+        self.Submit = function() {
+            // hide dialog
+            self.Show(false);
+        };
+    },
+    template: "<div data-bind='visible: Show'><p>I'm here</p><button data-bind='click: Submit'>Close</button></div>"});
+
+
+
+    // top level viewmodel
+    var vm = function() {
+      var self = this;
+      self.DialogVisible = ko.observable(false);
+      self.ComponentVisible = function() {
+          self.DialogVisible(true);
+      };
+    };
+
+    ko.applyBindings(new vm());
+  </script>
+</body>
+</html>

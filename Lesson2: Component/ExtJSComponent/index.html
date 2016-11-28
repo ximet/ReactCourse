@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="http://extjs.cachefly.net/ext-4.1.0-gpl/resources/css/ext-all-gray-debug.css" />
+<script src="http://extjs.cachefly.net/ext-4.1.0-gpl/ext-all-dev.js"></script>
+
+<!-- JQuery stuff -->
+<link rel="stylesheet" href="http://deepliquid.com/Jcrop/css/jquery.Jcrop.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://deepliquid.com/Jcrop/js/jquery.Jcrop.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+  Ext.define('DragablePanel', {
+  extend: 'Ext.panel.Panel',
+
+  title: 'Drag your mouse over the image',
+  width:580,
+  height: 450,
+
+  initComponent: function() {
+      var self = this;
+
+      Ext.applyIf(self, {
+          items: [
+              {
+                  xtype: 'image',
+                  src: 'https://pp.vk.me/c625820/v625820974/25353/Ub2KZX-xskY.jpg'
+              }
+          ]
+      });
+
+      self.callParent(arguments);
+  }
+});
+
+Ext.onReady(function() {
+
+  var customComponent = new DragablePanel({
+      renderTo: Ext.getBody()
+  });
+
+  var referenceToImage = customComponent.down('image').el.dom;
+
+  $(referenceToImage).Jcrop();
+
+});
+  </script>
+</body>
+</html>

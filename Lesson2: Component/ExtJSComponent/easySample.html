@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="http://extjs.cachefly.net/ext-4.1.0-gpl/resources/css/ext-all-gray-debug.css" />
+<script src="http://extjs.cachefly.net/ext-4.1.0-gpl/ext-all-dev.js"></script>
+
+<!-- JQuery stuff -->
+<link rel="stylesheet" href="http://deepliquid.com/Jcrop/css/jquery.Jcrop.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://deepliquid.com/Jcrop/js/jquery.Jcrop.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+<script>
+  Ext.define('AlertOloloPanel', {
+    extend: 'Ext.Component',
+
+    initComponent: function() {
+        alert('OLOLO')
+    }
+  });
+
+  Ext.onReady(function() {
+
+    var customComponent = new AlertOloloPanel({
+        renderTo: Ext.getBody()
+    });
+  });
+</script>
+</body>
+</html>
