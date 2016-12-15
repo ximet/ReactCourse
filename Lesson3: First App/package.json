@@ -1,0 +1,23 @@
+{
+  "name": "y",
+  "scripts": {
+    "webpack": "webpack --colors --progress --watch",
+    "display_module": "webpack --display-modules",
+    "webstatic": "webpack --json --profile > static.json"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "node-libs-browser": "~0.5.2",
+    "react": "^15.1.0",
+    "history": "^2.0.0",
+    "react-dom": "^15.1.0",
+    "react-hot-loader": "^1.3.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.5.1",
+    "webpack": "~1.10.0"
+  }
+}
