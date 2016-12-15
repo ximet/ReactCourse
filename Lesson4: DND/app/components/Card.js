@@ -4,11 +4,13 @@ import ItemTypes from './ItemTypes';
 import { DragSource, DropTarget } from 'react-dnd';
 
 const style = {
-    border: '1px dashed gray',
+    border: '1px solid gray',
     padding: '0.5rem 1rem',
     marginBottom: '.5rem',
     backgroundColor: 'white',
-    cursor: 'move'
+    cursor: 'move',
+    width: 200,
+    margin: '0 auto'
 };
 
 const cardSource = {
@@ -74,17 +76,7 @@ const cardTarget = {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
 }))
-export default class Card extends Component {
-    static propTypes = {
-        connectDragSource: PropTypes.func.isRequired,
-        connectDropTarget: PropTypes.func.isRequired,
-        index: PropTypes.number.isRequired,
-        isDragging: PropTypes.bool.isRequired,
-        id: PropTypes.any.isRequired,
-        text: PropTypes.string.isRequired,
-        moveCard: PropTypes.func.isRequired
-    };
-
+class Card extends Component {
     render() {
         const { text, isDragging, connectDragSource, connectDropTarget } = this.props;
         const opacity = isDragging ? 0 : 1;
@@ -96,3 +88,15 @@ export default class Card extends Component {
         ));
     }
 }
+
+Card.propTypes = {
+    connectDragSource: PropTypes.func.isRequired,
+    connectDropTarget: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
+    isDragging: PropTypes.bool.isRequired,
+    id: PropTypes.any.isRequired,
+    text: PropTypes.string.isRequired,
+    moveCard: PropTypes.func.isRequired
+};
+
+export default Card;

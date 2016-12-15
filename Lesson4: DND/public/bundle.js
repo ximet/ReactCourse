@@ -27341,7 +27341,11 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var style = {
-	    width: 400
+	    display: 'flex'
+	};
+
+	var subElementStyle = {
+	    width: 350
 	};
 
 	var Container = (_dec = (0, _reactDnd.DragDropContext)(_reactDndHtml5Backend2.default), _dec(_class = function (_Component) {
@@ -27352,37 +27356,84 @@
 
 	        var _this = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this, props));
 
-	        _this.moveCard = _this.moveCard.bind(_this);
+	        _this.moveCard2 = _this.moveCard2.bind(_this);
+	        _this.moveCard3 = _this.moveCard3.bind(_this);
+
 	        _this.state = {
 	            cards: [{
 	                id: 1,
-	                text: 'Write a cool JS library'
+	                text: 'First'
 	            }, {
 	                id: 2,
-	                text: 'Make it generic enough'
+	                text: 'Second'
 	            }, {
 	                id: 3,
-	                text: 'Write README'
+	                text: 'Third'
 	            }, {
 	                id: 4,
-	                text: 'Create some examples'
+	                text: 'I have some question'
 	            }, {
 	                id: 5,
-	                text: 'Spam in Twitter and IRC to promote it (note that this element is taller than the others)'
+	                text: 'Lorem Ipsum'
 	            }, {
 	                id: 6,
-	                text: '???'
+	                text: 'null'
 	            }, {
 	                id: 7,
-	                text: 'PROFIT'
+	                text: 'UNDEFINED'
+	            }],
+	            cards2: [{
+	                id: 1,
+	                text: 'First'
+	            }, {
+	                id: 2,
+	                text: 'Second'
+	            }, {
+	                id: 3,
+	                text: 'Third'
+	            }, {
+	                id: 4,
+	                text: 'I have some question'
+	            }, {
+	                id: 5,
+	                text: 'Lorem Ipsum'
+	            }, {
+	                id: 6,
+	                text: 'null'
+	            }, {
+	                id: 7,
+	                text: 'UNDEFINED'
+	            }],
+	            cards3: [{
+	                id: 1,
+	                text: 'First'
+	            }, {
+	                id: 2,
+	                text: 'Second'
+	            }, {
+	                id: 3,
+	                text: 'Third'
+	            }, {
+	                id: 4,
+	                text: 'I have some question'
+	            }, {
+	                id: 5,
+	                text: 'Lorem Ipsum'
+	            }, {
+	                id: 6,
+	                text: 'null'
+	            }, {
+	                id: 7,
+	                text: 'UNDEFINED'
 	            }]
 	        };
 	        return _this;
 	    }
 
 	    _createClass(Container, [{
-	        key: 'moveCard',
-	        value: function moveCard(dragIndex, hoverIndex) {
+	        key: 'moveCard1',
+	        value: function moveCard1(dragIndex, hoverIndex, cardz) {
+	            console.log('dragIndex: ', dragIndex, 'hoverIndex:', hoverIndex);
 	            var cards = this.state.cards;
 
 	            var dragCard = cards[dragIndex];
@@ -27394,23 +27445,78 @@
 	            }));
 	        }
 	    }, {
+	        key: 'moveCard2',
+	        value: function moveCard2(dragIndex, hoverIndex) {
+	            var cards2 = this.state.cards2;
+
+	            var dragCard = cards2[dragIndex];
+
+	            this.setState((0, _update2.default)(this.state, {
+	                cards2: {
+	                    $splice: [[dragIndex, 1], [hoverIndex, 0, dragCard]]
+	                }
+	            }));
+	        }
+	    }, {
+	        key: 'moveCard3',
+	        value: function moveCard3(dragIndex, hoverIndex) {
+	            var cards3 = this.state.cards3;
+
+	            var dragCard = cards3[dragIndex];
+
+	            this.setState((0, _update2.default)(this.state, {
+	                cards3: {
+	                    $splice: [[dragIndex, 1], [hoverIndex, 0, dragCard]]
+	                }
+	            }));
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
 
-	            var cards = this.state.cards;
+	            var _state = this.state;
+	            var cards = _state.cards;
+	            var cards2 = _state.cards2;
+	            var cards3 = _state.cards3;
 
 
 	            return _react2.default.createElement(
 	                'div',
 	                { style: style },
-	                cards.map(function (card, i) {
-	                    return _react2.default.createElement(_Card2.default, { key: card.id,
-	                        index: i,
-	                        id: card.id,
-	                        text: card.text,
-	                        moveCard: _this2.moveCard });
-	                })
+	                _react2.default.createElement(
+	                    'div',
+	                    { style: subElementStyle },
+	                    cards.map(function (card, i) {
+	                        return _react2.default.createElement(_Card2.default, { key: card.id,
+	                            index: i,
+	                            id: card.id,
+	                            text: card.text,
+	                            moveCard: _this2.moveCard1.bind(_this2) });
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { style: subElementStyle },
+	                    cards2.map(function (card, i) {
+	                        return _react2.default.createElement(_Card2.default, { key: card.id,
+	                            index: i,
+	                            id: card.id,
+	                            text: card.text,
+	                            moveCard: _this2.moveCard2 });
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { style: subElementStyle },
+	                    cards3.map(function (card, i) {
+	                        return _react2.default.createElement(_Card2.default, { key: card.id,
+	                            index: i,
+	                            id: card.id,
+	                            text: card.text,
+	                            moveCard: _this2.moveCard3 });
+	                    })
+	                )
 	            );
 	        }
 	    }]);
@@ -27547,13 +27653,12 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _dec, _dec2, _class, _class2, _temp;
+	var _dec, _dec2, _class;
 
 	var _react = __webpack_require__(1);
 
@@ -27576,11 +27681,13 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var style = {
-	    border: '1px dashed gray',
+	    border: '1px solid gray',
 	    padding: '0.5rem 1rem',
 	    marginBottom: '.5rem',
 	    backgroundColor: 'white',
-	    cursor: 'move'
+	    cursor: 'move',
+	    width: 200,
+	    margin: '0 auto'
 	};
 
 	var cardSource = {
@@ -27648,7 +27755,7 @@
 	        connectDragSource: connect.dragSource(),
 	        isDragging: monitor.isDragging()
 	    };
-	}), _dec(_class = _dec2(_class = (_temp = _class2 = function (_Component) {
+	}), _dec(_class = _dec2(_class = function (_Component) {
 	    _inherits(Card, _Component);
 
 	    function Card() {
@@ -27677,7 +27784,10 @@
 	    }]);
 
 	    return Card;
-	}(_react.Component), _class2.propTypes = {
+	}(_react.Component)) || _class) || _class);
+
+
+	Card.propTypes = {
 	    connectDragSource: _react.PropTypes.func.isRequired,
 	    connectDropTarget: _react.PropTypes.func.isRequired,
 	    index: _react.PropTypes.number.isRequired,
@@ -27685,7 +27795,8 @@
 	    id: _react.PropTypes.any.isRequired,
 	    text: _react.PropTypes.string.isRequired,
 	    moveCard: _react.PropTypes.func.isRequired
-	}, _temp)) || _class) || _class);
+	};
+
 	exports.default = Card;
 
 /***/ },
