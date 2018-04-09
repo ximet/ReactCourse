@@ -1,4 +1,5 @@
 # ReactCourse
+## deprecated
 
 - 1 Lesson: Example component GWT and jQuery
 - 2 Lesson: Example component ExtJS and Knockout and JSX
